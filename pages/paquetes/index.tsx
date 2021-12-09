@@ -4,6 +4,7 @@ import { useSession } from "next-auth/client";
 import { PrismaClient } from "@prisma/client";
 import Link from "next/link";
 import ObjectCard from "../../components/ObjectCard";
+import Head from "next/head";
 
 const prisma = new PrismaClient();
 interface Props {
@@ -16,20 +17,25 @@ function Objetos({ objetos }: Props): ReactElement {
     return (
       <>
         <Navbar />
+        <Head>
+          <title>Panel de Paquetes</title>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+        </Head>
         <div className="flex flex-col items-center justify-center w-full p-4">
-          <div className="grid items-center justify-center w-full grid-cols-12">
-            <h1 className="w-full col-span-6 ml-24 text-5xl font-bold text-right text-black ">
+          <div className="grid items-center justify-center w-full grid-cols-1 gap-4">
+            <Link href="/paquetes/crear" passHref>
+              <button className="p-2 ml-auto font-semibold text-white bg-blue-600 w-36">
+                Crear Paquete
+              </button>
+            </Link>
+            <h1 className="w-full text-4xl font-bold text-center text-black md:text-5xl ">
               Paquetes
             </h1>
-            <div className="flex flex-row-reverse w-full col-span-6 ">
-              <Link href="/paquetes/crear" passHref>
-                <button className="p-2 font-semibold text-white bg-blue-600 ">
-                  Crear Paquete
-                </button>
-              </Link>
-            </div>
           </div>
-          <div className="grid w-full grid-cols-5 my-2 space-y-5 ">
+          <div className="grid w-full grid-cols-2 gap-4 my-2 md:grid-cols-3 lg:grid-cols-5 ">
             {objetos.map((objeto: any, index: any) => (
               <ObjectCard key={index} object={objeto} />
             ))}

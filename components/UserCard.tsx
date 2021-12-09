@@ -18,12 +18,10 @@ interface Props {
 const UserCard = ({ user }: Props) => {
   const router = useRouter();
   return (
-    <div className="grid grid-cols-1 gap-2 p-2 my-2 text-xl font-semibold text-center text-white bg-black md:grid-cols-6 bg-opacity-70">
+    <div className="grid grid-cols-1 gap-2 p-2 my-2 text-xl font-semibold text-center text-white bg-black md:grid-cols-5 bg-opacity-70">
       <span>{user.username}</span>
       <span>{user.email}</span>
-      <span className={user.isActive ? "bg-green-600" : "bg-red-600"}>
-        {user.isActive ? "Activo" : "Desactivado"}
-      </span>
+
       <span>{user.role}</span>
       <Link href={`/usuarios/modificar/${user.id}`} passHref>
         <button className="bg-blue-600">Modificar</button>

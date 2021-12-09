@@ -11,9 +11,10 @@
   "dependencies": {
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.5",
-    "@prisma/client": "^3.4.1",
+    "@prisma/client": "^3.4.2",
     "@tailwindcss/aspect-ratio": "^0.3.0",
     "@types/bcryptjs": "^2.4.2",
+    "@types/uniqid": "^5.3.1",
     "axios": "^0.24.0",
     "bcryptjs": "^2.4.3",
     "next": "12.0.1",
@@ -21,9 +22,11 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-hook-form": "^7.19.1",
+    "react-to-print": "^2.14.1",
     "styled-components": "^5.3.3",
     "superjson": "^1.8.0",
-    "tailwind-styled-components": "^2.0.3"
+    "tailwind-styled-components": "^2.0.3",
+    "uniqid": "^5.4.0"
   },
   "devDependencies": {
     "@types/react": "17.0.33",

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import Navbar from "../../../components/Navbar";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 function CrearObjeto(): ReactElement {
   const [session, loading] = useSession();
@@ -21,6 +22,13 @@ function CrearObjeto(): ReactElement {
     return (
       <>
         <Navbar />
+        <Head>
+          <title>Crear Paquete</title>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+        </Head>
         <div className="flex flex-col items-center justify-center w-full p-4 my-4">
           <div className="grid items-center justify-center w-full grid-cols-1">
             <h1 className="w-full text-5xl font-bold text-center text-black ">
@@ -46,25 +54,20 @@ function CrearObjeto(): ReactElement {
                 {...register("precio", { required: true })}
               />
             </div>
-            <div className="flex flex-col space-y-2">
+            <div className="flex flex-col p-2 space-y-2">
               <label className="font-semibold">Descripción: </label>
-              <input
-                type="text"
+              <textarea
+                className="p-2"
                 {...register("description", { required: true })}
               />
             </div>
-            <div className="flex flex-col space-y-2">
-              <label className="font-semibold">URL de la Imagen: </label>
-              <input
-                type="text"
-                {...register("imageUrl", { required: true })}
-              />
-            </div>
 
-            <input
+            <button
               className="p-2 font-semibold text-white bg-blue-600"
               type="submit"
-            />
+            >
+              Crear Paquete
+            </button>
           </form>
         </div>
       </>

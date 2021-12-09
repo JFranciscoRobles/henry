@@ -15,12 +15,12 @@ model Objeto {
   precio      Int?
   nombre      String?
   description String?
-  imageUrl    String?
   cuentas     Cuenta[]
 }
 
 model Cuenta {
   id             Int       @id @default(autoincrement())
+  registeredAt   DateTime  @default(now())
   nombreCliente  String?
   nombreEmpleado String?
   fecha          DateTime?

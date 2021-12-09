@@ -8,7 +8,6 @@ export default async function handle(req: any, res: any) {
         precio: parseInt(req.body.data.precio),
         nombre: req.body.data.nombre,
         description: req.body.data.description,
-        imageUrl: req.body.data.imageUrl,
       },
     });
     return res.json({ msg: "Objeto creado" });

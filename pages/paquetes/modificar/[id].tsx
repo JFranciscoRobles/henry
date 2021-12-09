@@ -5,6 +5,7 @@ import Navbar from "../../../components/Navbar";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { PrismaClient } from "@prisma/client";
+import Head from "next/head";
 
 function ModificarObjeto({ objeto }: any): ReactElement {
   const [session, loading] = useSession();
@@ -23,6 +24,13 @@ function ModificarObjeto({ objeto }: any): ReactElement {
     return (
       <>
         <Navbar />
+        <Head>
+          <title>Modificar Paquete</title>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+        </Head>
         <div className="flex flex-col items-center justify-center w-full p-4 my-4">
           <div className="grid items-center justify-center w-full grid-cols-1">
             <h1 className="w-full text-5xl font-bold text-center text-black ">
@@ -38,7 +46,7 @@ function ModificarObjeto({ objeto }: any): ReactElement {
               <input
                 type="text"
                 placeholder={objeto.nombre}
-                {...register("nombre", { required: true })}
+                {...register("nombre")}
               />
             </div>
             <div className="flex flex-col space-y-2">
@@ -46,30 +54,24 @@ function ModificarObjeto({ objeto }: any): ReactElement {
               <input
                 type="number"
                 placeholder={objeto.precio}
-                {...register("precio", { required: true })}
+                {...register("precio")}
               />
             </div>
             <div className="flex flex-col space-y-2">
               <label className="font-semibold">Descripción: </label>
-              <input
-                type="text"
+              <textarea
+                className="p-2"
                 placeholder={objeto.description}
-                {...register("description", { required: true })}
-              />
-            </div>
-            <div className="flex flex-col space-y-2">
-              <label className="font-semibold">URL de la Imagen: </label>
-              <input
-                type="text"
-                value={objeto.imageUrl}
-                {...register("imageUrl", { required: true })}
+                {...register("description")}
               />
             </div>
 
-            <input
+            <button
               className="p-2 font-semibold text-white bg-blue-600"
               type="submit"
-            />
+            >
+              Crear Paquete
+            </button>
           </form>
         </div>
       </>
@@ -102,7 +104,7 @@ const modificarObjeto = async (data: any, router: any, id: number) => {
       data: { id, data },
     })
     .then(function (response: any) {
-      router.push("/objetos");
+      router.push("/paquetes");
     })
     .catch(function (error: any) {
       alert("Ya hay un objeto con los mismos datos");

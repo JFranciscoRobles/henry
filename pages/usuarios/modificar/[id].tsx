@@ -5,6 +5,7 @@ import Navbar from "../../../components/Navbar";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { PrismaClient } from "@prisma/client";
+import Head from "next/head";
 
 function ModificarUsuario({ usuario }: any): ReactElement {
   const [session, loading] = useSession();
@@ -23,6 +24,13 @@ function ModificarUsuario({ usuario }: any): ReactElement {
     return (
       <>
         <Navbar />
+        <Head>
+          <title>Modificar Usuario</title>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+        </Head>
         <div className="flex flex-col items-center justify-center w-full p-4 my-4">
           <div className="grid items-center justify-center w-full grid-cols-1">
             <h1 className="w-full text-5xl font-bold text-center text-black ">
@@ -38,7 +46,7 @@ function ModificarUsuario({ usuario }: any): ReactElement {
               <input
                 type="text"
                 placeholder={usuario.username}
-                {...register("nombre", { required: true })}
+                {...register("nombre")}
               />
             </div>
             <div className="flex flex-col space-y-2">
@@ -46,7 +54,7 @@ function ModificarUsuario({ usuario }: any): ReactElement {
               <input
                 type="email"
                 placeholder={usuario.email}
-                {...register("correo", { required: true })}
+                {...register("correo")}
               />
             </div>
             <div className="flex flex-col space-y-2">
@@ -54,24 +62,23 @@ function ModificarUsuario({ usuario }: any): ReactElement {
               <input
                 type="password"
                 placeholder="Contraseña"
-                {...register("password", { required: true })}
+                {...register("password")}
               />
             </div>
             <div className="flex flex-col space-y-2">
               <label className="font-semibold">Tipo de Usuario: </label>
-              <select
-                placeholder={usuario.role}
-                {...register("rol", { required: true })}
-              >
+              <select placeholder={usuario.role} {...register("rol")}>
                 <option value="USER">USER</option>
                 <option value="ADMIN">ADMIN</option>
               </select>
             </div>
 
-            <input
+            <button
               className="p-2 font-semibold text-white bg-blue-600"
               type="submit"
-            />
+            >
+              Modificar Usuario
+            </button>
           </form>
         </div>
       </>

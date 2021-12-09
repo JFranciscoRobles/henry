@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Image from "next/image";
+
 import axios from "axios";
 type typeObject = {
   id: number;
@@ -19,17 +19,17 @@ const ObjectCard = ({ object }: Props) => {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col w-full gap-2 p-2 my-2 text-xl font-semibold text-center text-white bg-white shadow-lg hover:bg-gray-200 ">
-      <Image
-        src={object.imageUrl}
-        alt="Picture of the author"
-        width={600}
-        height={500}
-      />
-      <div className="flex flex-col items-start text-black">
-        <span className="font-bold">{object.nombre}</span>
-        <span className="font-semibold">Precio: {object.precio} Pesos</span>
-        <span className="text-lg text-gray-800"> {object.description} </span>
+    <div className="flex flex-col w-full gap-2 p-2 my-2 font-semibold text-white bg-white shadow-lg hover:bg-gray-200 ">
+      <div className="flex flex-col items-start w-full text-black">
+        <span className="w-full text-2xl font-bold text-center ">
+          {object.nombre}
+        </span>
+        <span className="text-lg font-semibold">
+          Precio: {object.precio} Pesos
+        </span>
+        <span className="text-base text-gray-700 whitespace-pre">
+          {object.description}
+        </span>
       </div>
       <Link href={`/paquetes/modificar/${object.id}`} passHref>
         <button className="bg-blue-600">Modificar</button>

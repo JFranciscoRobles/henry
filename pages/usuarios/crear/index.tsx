@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import Navbar from "../../../components/Navbar";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 function CrearUsuario(): ReactElement {
   const [session, loading] = useSession();
@@ -21,6 +22,13 @@ function CrearUsuario(): ReactElement {
     return (
       <>
         <Navbar />
+        <Head>
+          <title>Crear Usuario</title>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+        </Head>
         <div className="flex flex-col items-center justify-center w-full p-4 my-4">
           <div className="grid items-center justify-center w-full grid-cols-1">
             <h1 className="w-full text-5xl font-bold text-center text-black ">
@@ -63,10 +71,12 @@ function CrearUsuario(): ReactElement {
               </select>
             </div>
 
-            <input
+            <button
               className="p-2 font-semibold text-white bg-blue-600"
               type="submit"
-            />
+            >
+              Crear Usuario
+            </button>
           </form>
         </div>
       </>
