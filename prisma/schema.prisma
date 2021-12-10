@@ -11,21 +11,32 @@ datasource db {
 }
 
 model Objeto {
-  id          Int      @id @default(autoincrement())
+  id          Int            @id @default(autoincrement())
   precio      Int?
   nombre      String?
   description String?
-  cuentas     Cuenta[]
+  cuentas     CuentaObjeto[]
 }
 
 model Cuenta {
-  id             Int       @id @default(autoincrement())
-  registeredAt   DateTime  @default(now())
+  id             Int            @id @default(autoincrement())
+  registeredAt   DateTime       @default(now())
   nombreCliente  String?
   nombreEmpleado String?
   fecha          DateTime?
   precioFinal    Int?
-  objetos        Objeto[]
+  objetos        CuentaObjeto[]
+}
+
+model CuentaObjeto {
+  objeto      Objeto @relation(fields: [objetoId], references: [id])
+  objetoId    Int // relation scalar field (used in the `@relation` attribute above)
+  cuenta      Cuenta @relation(fields: [cuentaId], references: [id])
+  cuentaId    Int // relation scalar field (used in the `@relation` attribute above)
+  cantidad    Int
+  precioTotal Int
+
+  @@id([objetoId, cuentaId])
 }
 
 model Usuario {
