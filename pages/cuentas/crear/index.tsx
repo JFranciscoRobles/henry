@@ -17,7 +17,7 @@ function CrearCuenta({ objetos }: any): ReactElement {
   function agregarProducto(producto: any) {
     const UID = uniqid();
     const newProduct = { UID, producto };
-
+    /* @ts-ignore */
     setCarrito([...carrito, newProduct]);
     setPrecio(precio + producto.precio);
   }
@@ -54,6 +54,7 @@ function CrearCuenta({ objetos }: any): ReactElement {
               <div className="flex flex-col space-y-2">
                 <label className="font-semibold">Empleado Encargado: </label>
                 <input
+                  /* @ts-ignore */
                   value={session?.user?.username || "No tiene nombre"}
                   placeholder="Empleado"
                   type="text"

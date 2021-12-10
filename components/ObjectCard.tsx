@@ -8,7 +8,6 @@ type typeObject = {
   precio: number;
   nombre: string;
   description: string;
-  imageUrl: string;
 };
 
 interface Props {
@@ -20,7 +19,7 @@ const ObjectCard = ({ object }: Props) => {
 
   return (
     <div className="flex flex-col w-full gap-2 p-2 my-2 font-semibold text-white bg-white shadow-lg hover:bg-gray-200 ">
-      <div className="flex flex-col items-start w-full text-black">
+      <div className="flex flex-col items-start w-full space-y-2 text-black">
         <span className="w-full text-2xl font-bold text-center ">
           {object.nombre}
         </span>
@@ -32,7 +31,7 @@ const ObjectCard = ({ object }: Props) => {
         </span>
       </div>
       <Link href={`/paquetes/modificar/${object.id}`} passHref>
-        <button className="bg-blue-600">Modificar</button>
+        <button className="mt-auto bg-blue-600">Modificar</button>
       </Link>
       <button
         onClick={() => eliminarObjeto(object.id, router)}

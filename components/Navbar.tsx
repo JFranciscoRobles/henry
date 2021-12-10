@@ -18,6 +18,7 @@ function Navbar({}: Props): ReactElement {
                   <div className="flex items-center justify-center space-x-4">
                     {navigation.map((item) =>
                       item.name === "Usuarios" ? (
+                        /* @ts-ignore */
                         session.user?.role === "ADMIN" ? (
                           <a
                             key={item.name}
@@ -33,9 +34,7 @@ function Navbar({}: Props): ReactElement {
                       ) : item.name === "Cerrar Sesion" ? (
                         <a
                           key={item.name}
-                          onClick={() =>
-                            signOut({ callbackUrl: "http://localhost:3000/" })
-                          }
+                          onClick={() => signOut({ callbackUrl: "/" })}
                           className={classNames(
                             "text-gray-300 hover:bg-gray-700 hover:text-white",
                             "px-3 py-2 rounded-md text-sm font-medium"
@@ -58,8 +57,10 @@ function Navbar({}: Props): ReactElement {
                     )}
                     <div className="flex flex-col items-center justify-center">
                       <span className="text-white">
+                        {/* @ts-ignore */}
                         {session?.user?.username}
                       </span>
+                      {/* @ts-ignore */}
                       <span className="text-white">{session?.user?.role}</span>
                     </div>
                   </div>
@@ -125,7 +126,9 @@ function Navbar({}: Props): ReactElement {
               )}
             </div>
             <div className="flex flex-col items-center justify-center p-2">
+              {/* @ts-ignore */}
               <span className="text-white">{session?.user?.username}</span>
+              {/* @ts-ignore */}
               <span className="text-white">{session?.user?.role}</span>
             </div>
           </Disclosure.Panel>

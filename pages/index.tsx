@@ -32,10 +32,10 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black bg-opacity-80">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-white ">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col items-center justify-center w-full space-y-6 text-lg "
+        className="flex flex-col items-center justify-center w-full max-w-lg space-y-6 text-lg bg-gray-200 shadow-md"
       >
         <Image
           src="https://www.mrpampas.com/images/logo.png"
