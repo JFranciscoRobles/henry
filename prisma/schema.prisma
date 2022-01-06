@@ -15,6 +15,7 @@ model Objeto {
   precio      Int?
   nombre      String?
   description String?
+  isActive    String         @default("1") @db.Char(1)
   cuentas     CuentaObjeto[]
 }
 

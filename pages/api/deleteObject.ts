@@ -2,15 +2,30 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export default async function handle(req: any, res: any) {
-  console.log(req.body);
   try {
-    await prisma.objeto.delete({
+    const objectExists = await prisma.objeto.findFirst({
       where: {
-        id: parseInt(req.body),
+        id: req.body.data,
       },
     });
-    res.json({ msg: "Objeto Eliminado" });
+
+    if (!objectExists) {
+      throw new Error("Objeto no encontrado");
+    }
+
+    const activo: any = parseInt(objectExists.isActive) >= 1 ? "0" : "1";
+
+    await prisma.objeto.update({
+      where: {
+        id: objectExists.id,
+      },
+      data: {
+        isActive: activo,
+      },
+    });
+
+    return res.json({ msg: "Objeto Modificado" });
   } catch (error) {
-    res.json({ msg: "Ha ocurrido un error" });
+    throw error;
   }
 }

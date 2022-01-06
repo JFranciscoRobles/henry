@@ -5,7 +5,7 @@ import { PrismaClient } from "@prisma/client";
 import Link from "next/link";
 import ObjectCard from "../../components/ObjectCard";
 import Head from "next/head";
-
+import _ from "lodash";
 const prisma = new PrismaClient();
 interface Props {
   objetos: any;
@@ -13,6 +13,8 @@ interface Props {
 
 function Objetos({ objetos }: Props): ReactElement {
   const [session, loading] = useSession();
+  const objetosOrdenados = _.orderBy(objetos, ["isActive"], ["desc"]);
+  console.log(objetosOrdenados);
   if (session) {
     return (
       <>
@@ -35,9 +37,9 @@ function Objetos({ objetos }: Props): ReactElement {
               Paquetes
             </h1>
           </div>
-          <div className="grid w-full grid-cols-2 gap-4 my-2 md:grid-cols-3 lg:grid-cols-5 ">
-            {objetos.map((objeto: any, index: any) => (
-              <ObjectCard key={index} object={objeto} />
+          <div className="grid w-full grid-cols-1 gap-4 p-4 my-2 md:grid-cols-3 lg:grid-cols-5">
+            {objetosOrdenados.map((objeto: any) => (
+              <ObjectCard key={objeto.id} object={objeto} />
             ))}
           </div>
         </div>

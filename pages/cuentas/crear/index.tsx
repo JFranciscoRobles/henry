@@ -135,7 +135,11 @@ function CrearCuenta({ objetos }: any): ReactElement {
 export default CrearCuenta;
 
 export const getServerSideProps = async () => {
-  const objetos = await prisma.objeto.findMany();
+  const objetos = await prisma.objeto.findMany({
+    where: {
+      isActive: "1",
+    },
+  });
   return { props: { objetos } };
 };
 
