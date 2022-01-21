@@ -30,15 +30,15 @@ const AccountCard = ({ account }: Props) => {
           Reserva el: {dt.day}/{dt.month}/{dt.year} a las {dt.hour}:{dt.minute}{" "}
           Horas
         </span>
-        <Link href={`/cuentas/imprimir/${account.id}`} passHref>
-          <button
-            className="w-full p-2 font-semibold text-white bg-blue-600"
-            type="submit"
-          >
-            Imprimir Cuenta
-          </button>
-        </Link>
       </div>
+      <Link href={`/cuentas/imprimir/${account.id}`} passHref>
+        <button
+          className="w-full p-2 mt-auto font-semibold text-white bg-blue-600"
+          type="submit"
+        >
+          Imprimir Cuenta
+        </button>
+      </Link>
     </div>
   );
 };
