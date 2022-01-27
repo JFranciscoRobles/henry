@@ -21,23 +21,25 @@ function Usuarios({ cuentas }: Props): ReactElement {
 
         <div className="flex flex-col items-center justify-center w-full p-4 space-y-4">
           <div className="grid items-center justify-center w-full grid-cols-1 gap-4">
-            <Link href="/cuentas/crear" passHref>
-              <button className="p-2 ml-auto font-semibold text-white bg-blue-600 w-36">
-                Crear Cuenta
-              </button>
-            </Link>
             <h1 className="w-full mb-2 text-4xl font-bold text-center text-black md:text-5xl ">
               Cuentas
             </h1>
-          </div>
-          <div className="w-full mb-4">
-            <input
-              type="search"
-              placeholder="Buscador"
-              value={filter}
-              onChange={(event) => setFilter(event.target.value)}
-              className="w-full max-w-lg p-2 text-lg border-2 border-gray-400 border-solid"
-            />
+            <div className="flex flex-row flex-wrap">
+              <div className="w-56 mb-4 ">
+                <input
+                  type="search"
+                  placeholder="Buscador"
+                  value={filter}
+                  onChange={(event) => setFilter(event.target.value)}
+                  className="w-full max-w-lg p-2 text-lg border-2 border-gray-400 border-solid"
+                />
+              </div>
+              <Link href="/cuentas/crear" passHref>
+                <button className="p-2 ml-auto font-semibold text-white bg-blue-600 w-36">
+                  Crear Cuenta
+                </button>
+              </Link>
+            </div>
           </div>
           <div className="grid w-full grid-cols-1 gap-4 my-2 md:grid-cols-2 lg:grid-cols-5 ">
             {cuentas

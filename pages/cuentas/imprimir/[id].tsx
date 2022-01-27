@@ -20,6 +20,7 @@ function FichaTecnica({ cuenta }: Props): ReactElement {
     // @ts-ignore */}
     handlePrint();
   });
+  const numberFormat = new Intl.NumberFormat("en");
   return (
     <>
       <button onClick={handlePrint}>Imprimir</button>
@@ -34,6 +35,12 @@ function FichaTecnica({ cuenta }: Props): ReactElement {
             <h1 className="text-4xl font-bold text-center uppercase">Pampas</h1>
             <span className="ml-auto text-lg font-bold">
               Cliente: {cuenta.nombreCliente}
+            </span>
+            <span className="ml-auto text-lg font-bold">
+              Número: {cuenta.celular}
+            </span>
+            <span className="mr-auto text-lg font-bold">
+              Dirección: {cuenta.direccion}
             </span>
             <div className="flex flex-col items-center justify-center text-base text-black">
               <span className="text-xl font-bold"> Reservación el</span>
@@ -56,14 +63,14 @@ function FichaTecnica({ cuenta }: Props): ReactElement {
                       {objeto.objeto.nombre}
                     </div>
                     <div className="flex items-center justify-center w-full">
-                      $ {objeto.precioTotal} MXN
+                      $ {numberFormat.format(objeto.precioTotal)} MXN
                     </div>
                   </div>
                 ))}
               </div>
             </div>
             <span className="ml-auto text-lg font-semibold">
-              Total: {cuenta.precioFinal} MXN
+              Total: {numberFormat.format(cuenta.precioFinal)} MXN
             </span>
 
             <div className="mt-auto text-base text-gray-700">

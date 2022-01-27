@@ -24,6 +24,8 @@ model Cuenta {
   registeredAt   DateTime       @default(now())
   nombreCliente  String?
   nombreEmpleado String?
+  celular        String?
+  direccion      String?
   fecha          DateTime?
   precioFinal    Int?
   objetos        CuentaObjeto[]

@@ -17,7 +17,7 @@ interface Props {
 
 const ObjectCard = ({ object }: Props) => {
   const router = useRouter();
-  console.log(object.id);
+  const numberFormat = new Intl.NumberFormat("en");
   return (
     <div className="flex flex-col w-full gap-2 p-2 my-2 font-semibold text-white bg-white shadow-lg hover:bg-gray-200 ">
       <div className="flex flex-col items-start w-full space-y-2 text-black">
@@ -25,7 +25,7 @@ const ObjectCard = ({ object }: Props) => {
           {object.nombre}
         </span>
         <span className="text-lg font-semibold">
-          Precio: {object.precio} Pesos
+          Precio: {numberFormat.format(object.precio)} Pesos
         </span>
         <span className="text-base text-gray-700 whitespace-pre">
           {object.description}

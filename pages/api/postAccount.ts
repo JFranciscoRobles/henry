@@ -32,6 +32,8 @@ export default async function handle(req: any, res: any) {
       data: {
         nombreCliente: data.nombreCliente,
         nombreEmpleado: data.nombreEmpleado,
+        celular: data.numeroCliente,
+        direccion: data.direccionCliente,
         fecha: formatDate,
         precioFinal: precio,
         objetos: {

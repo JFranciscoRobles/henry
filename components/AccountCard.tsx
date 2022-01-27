@@ -15,6 +15,7 @@ interface Props {
 }
 
 const AccountCard = ({ account }: Props) => {
+  const numberFormat = new Intl.NumberFormat("en");
   const dt = DateTime.fromJSDate(account.fecha);
   return (
     <div className="flex flex-col w-full gap-2 p-2 my-2 font-semibold text-white bg-white shadow-lg hover:bg-gray-200 ">
@@ -24,7 +25,7 @@ const AccountCard = ({ account }: Props) => {
           Cliente: {account.nombreCliente}
         </span>
         <span className="text-lg font-semibold">
-          Total: $ {account.precioFinal} Pesos
+          Total: $ {numberFormat.format(parseInt(account.precioFinal))} Pesos
         </span>
         <span className="text-base text-gray-700">
           Reserva el: {dt.day}/{dt.month}/{dt.year} a las {dt.hour}:{dt.minute}{" "}

@@ -32,10 +32,10 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-white ">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-green-600 ">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col items-center justify-center w-full max-w-lg space-y-6 text-lg bg-gray-200 shadow-md"
+        className="flex flex-col items-center justify-center w-full max-w-lg p-4 space-y-6 text-lg bg-gray-200 shadow-md"
       >
         <Image
           src="https://www.mrpampas.com/images/logo.png"
@@ -48,7 +48,7 @@ export default function Home() {
           type="text"
           value={email}
           placeholder="Correo"
-          className="p-2"
+          className="w-full p-2"
           onChange={(e) => setEmail(e.target.value)}
         />
 
@@ -56,14 +56,21 @@ export default function Home() {
           type="password"
           value={password}
           placeholder="Contraseña"
-          className="p-2"
+          className="w-full p-2"
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button className="p-2 text-xl text-white bg-blue-600" type="submit">
+        <button
+          className="w-full max-w-lg p-2 text-xl text-white bg-blue-600"
+          type="submit"
+        >
           Iniciar Sesion
         </button>
-        <span className="text-white"> {loginError}</span>
+        {loginError ? (
+          <span className="w-full p-2 text-center text-white bg-red-600">
+            {loginError}
+          </span>
+        ) : null}
       </form>
     </div>
   );

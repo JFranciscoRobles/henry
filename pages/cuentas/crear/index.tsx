@@ -22,6 +22,8 @@ function CrearCuenta({ objetos }: any): ReactElement {
     setPrecio(precio + producto.precio);
   }
 
+  const numberFormat = new Intl.NumberFormat("en");
+
   function eliminarProducto(objeto: any) {
     setCarrito(carrito.filter((objet: any) => objet.UID !== objeto.UID));
     setPrecio(precio - objeto.producto.precio);
@@ -58,6 +60,7 @@ function CrearCuenta({ objetos }: any): ReactElement {
                   value={session?.user?.username || "No tiene nombre"}
                   placeholder="Empleado"
                   type="text"
+                  readOnly
                   {...register("nombreEmpleado", { required: true })}
                 />
               </div>
@@ -70,6 +73,22 @@ function CrearCuenta({ objetos }: any): ReactElement {
                 />
               </div>
               <div className="flex flex-col space-y-2">
+                <label className="font-semibold">Dirección: </label>
+                <input
+                  placeholder="Dirección del Cliente"
+                  type="text"
+                  {...register("direccionCliente", { required: true })}
+                />
+              </div>
+              <div className="flex flex-col space-y-2">
+                <label className="font-semibold">Número: </label>
+                <input
+                  placeholder="Número del Cliente"
+                  type="text"
+                  {...register("numeroCliente", { required: true })}
+                />
+              </div>
+              <div className="flex flex-col space-y-2">
                 <label className="font-semibold">Fecha: </label>
                 <input
                   type="datetime-local"
@@ -78,7 +97,8 @@ function CrearCuenta({ objetos }: any): ReactElement {
               </div>
               <div className="flex flex-col space-y-2">
                 <label className="font-semibold">Precio Total: </label>
-                <input type="number" className="p-1" value={precio} />
+
+                <span className="p-1">$ {numberFormat.format(precio)}</span>
               </div>
 
               <button
@@ -99,7 +119,7 @@ function CrearCuenta({ objetos }: any): ReactElement {
                       onClick={() => agregarProducto(objeto)}
                     >
                       <span>{objeto.nombre}</span>
-                      <span>{objeto.precio} Pesos</span>
+                      <span>$ {numberFormat.format(objeto.precio)} Pesos</span>
                     </div>
                   ))}
                 </div>
